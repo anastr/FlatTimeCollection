@@ -1,6 +1,6 @@
 # FlatTimeCollection
 Amazing Dynamic Time UI :clock1030: :hourglass: for Android To help you design your Layout.
-it is Not just UI, But it contains a CountDownTimer with `pause()` and `resume()` methods :wink: .
+it is Not just a UI, But it contains a CountDownTimer with `pause()` and `resume()` methods :wink: .
 
 `minSdkVersion=11`
 
@@ -10,7 +10,7 @@ Library Size ~ 10 Kb.
 <img src="/images/HourGlassView.gif" width="5%" /><br/>
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FlatTimeCollection-green.svg?style=true)](https://android-arsenal.com/details/1/4104)<br/><br/>
 
-**note:** this Library doesn't use any drawable file (png, jpge ...), it is just use Path class to draw canvas.
+**note:** this Library doesn't use any drawable file (png, jpge ...), it just uses [Path](https://developer.android.com/reference/android/graphics/Path.html) class to draw canvas.
 
 # dependencies 
 
@@ -26,8 +26,8 @@ dependencies {
 
 ## FlatClockView
 Clock View with Dynamic colors, themes, and time -see correct time in preview-.
-you can change the time to what you want By using `setTime()` method.
-You can change the color of everything.
+The time can be adjusted By using `setTime()` method.
+And You can change the color of everything as well.
 
 <img src="/images/FlatClockView.gif" width="30%" />
 
@@ -79,7 +79,7 @@ withBackground="true"
 ```
 
 ## CountDownTimerView
-it is UI CountDownTimer with `pause()` and `resume()` methods, also with success and failed Animation.
+it is UI CountDownTimer with `pause()` and `resume()` methods, also with Success and Failure Animations.
 You can change the color of everything.
 
 <img src="/images/CountDownTimerView.gif" width="40%" />
