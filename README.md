@@ -1,5 +1,5 @@
 # FlatTimeCollection
-Amazing Dynamic Time UI :clock1030: :hourglass: To help you design your Layout.
+Amazing Dynamic Time UI :clock1030: :hourglass: for Android To help you design your Layout.
 it is Not just UI, But it contains a CountDownTimer with `pause()` and `resume()` methods :wink: .
 
 `minSdkVersion=11`
