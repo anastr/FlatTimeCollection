@@ -8,7 +8,9 @@ Library Size ~ 10 Kb.
 
 <img src="/images/all.png" width="40%" /><br/>
 <img src="/images/HourGlassView.gif" width="5%" /><br/>
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FlatTimeCollection-green.svg?style=true)](https://android-arsenal.com/details/1/4104)
+[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FlatTimeCollection-green.svg?style=true)](https://android-arsenal.com/details/1/4104)<br/><br/>
+
+**note:** this Library doesn't use any drawable file (png, jpge ...), it is just use Path class to draw canvas.
 
 # dependencies 
 
