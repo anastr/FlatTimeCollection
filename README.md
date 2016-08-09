@@ -6,7 +6,8 @@ it is Not just UI, But it contains a CountDownTimer with `pause()` and `resume()
 
 Library Size ~ 10 Kb.
 
-<img src="/images/all.png" width="40%" />
+<img src="/images/all.png" width="40%" /><br/>
+<img src="/images/HourGlassView.gif" width="5%" />
 
 # dependencies 
 
