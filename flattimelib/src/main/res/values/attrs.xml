@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FlatClockView">
+        <attr name="minIndicatorColor" format="color" />
+        <attr name="hourIndicatorColor" format="color" />
+        <attr name="secIndicatorColor" format="color" />
+        <attr name="bigMarkColor" format="color" />
+        <attr name="smallMarkColor" format="color" />
+        <attr name="backgroundCircleColor" format="color" />
+        <attr name="time" format="string" />
+        <attr name="withBackground" format="boolean" />
+    </declare-styleable>
+    <declare-styleable name="CountDownTimerView">
+        <attr name="indicatorColor" format="color" />
+        <attr name="remainingTimeColor" format="color" />
+        <attr name="strokeColor" format="color" />
+        <attr name="elapsedTimeColor" format="color" />
+        <attr name="strokeWidth" format="float" />
+    </declare-styleable>
+</resources>
