@@ -22,4 +22,12 @@
         android:text="CountDownTimerView"
         android:id="@+id/CountDownTimer"
         style="@style/Base.Theme.AppCompat.Light"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="HourGlass"
+        android:id="@+id/HourGlass"
+        style="@style/Base.Theme.AppCompat.Light"/>
+
 </LinearLayout>

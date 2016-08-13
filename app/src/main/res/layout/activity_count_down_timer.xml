@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,7 +12,7 @@
         android:id="@+id/countDownTimerView"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -74,8 +73,8 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="failed"
-            android:id="@+id/failed" />
+            android:text="failure"
+            android:id="@+id/failure" />
 
         <Button
             style="?android:attr/buttonStyleSmall"
@@ -83,6 +82,19 @@
             android:layout_height="wrap_content"
             android:text="ready"
             android:id="@+id/ready" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            style="@style/Base.Theme.AppCompat.Light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="without EndAnimation"
+            android:id="@+id/noAnimation" />
     </LinearLayout>
 
 </LinearLayout>

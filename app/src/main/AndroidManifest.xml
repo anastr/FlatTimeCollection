@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".CountDownTimerActivity" />
-        <activity android:name=".FlatClockActivity"></activity>
+        <activity android:name=".FlatClockActivity" />
+        <activity android:name=".HourGlassActivity"></activity>
     </application>
 
 </manifest>

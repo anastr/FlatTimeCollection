@@ -88,9 +88,12 @@ public class CountDownTimerView extends View{
         paint.setAntiAlias(true);
         strokePaint.setAntiAlias(true);
         strokePaint.setStyle(Paint.Style.STROKE);
-        strokePaint.setStrokeWidth(strokeWidth);
         if(isInEditMode())
             elapsedTime = 250f;
+
+        // these two line just to make valueAnimator and animatorSet != null
+        valueAnimator = ValueAnimator.ofFloat(0f, 1f);
+        animatorSet = new AnimatorSet();
     }
 
     @Override
@@ -112,6 +115,7 @@ public class CountDownTimerView extends View{
 
     private void initDraw(){
         strokePaint.setColor(strokeColor);
+        strokePaint.setStrokeWidth(strokeWidth);
     }
 
     @Override
@@ -158,11 +162,10 @@ public class CountDownTimerView extends View{
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                if(!isFinished && onTimeFinish != null) {
-                    startEndAnimation();
+                if(!isFinished && onTimeFinish != null)
                     onTimeFinish.onFinish();
-                }
-                isFinished = true;
+                if (!isFinished && finishMode != FinishMode.NoAnimation.mode)
+                    startEndAnimation();
             }
 
             @Override
@@ -176,6 +179,11 @@ public class CountDownTimerView extends View{
         valueAnimator.start();
     }
 
+    /**
+     * start the CountDownTimer.
+     * this well stop CountDownTimer if it was running.
+     * @param timeInMillisecond time in Millisecond.
+     */
     public void start(long timeInMillisecond) {
         stop();
         fullTime = timeInMillisecond;
@@ -183,17 +191,17 @@ public class CountDownTimerView extends View{
     }
 
     /**
-     * Ends the animation. this will not call
+     * Ends the CountDownTimer. this will not call
      * {@link OnTimeFinish#onFinish()} method on
      * its listeners.
      */
     public void stop(){
         mPaused = false;
         isFinished = true;
-        if(valueAnimator != null) {
-            valueAnimator.end();
-        }
+        animatorSet.end();
+        valueAnimator.end();
         isFinished = false;
+        invalidate();
     }
 
     /**
@@ -205,15 +213,11 @@ public class CountDownTimerView extends View{
      * @see #resume()
      */
     public void pause(){
-        if (valueAnimator == null || !valueAnimator.isRunning() || mPaused)
+        if (!valueAnimator.isRunning() || mPaused)
             return;
         mPaused = true;
         isFinished = true;
-        float elapsed = elapsedTime;
-        if (valueAnimator != null) {
-            valueAnimator.end();
-        }
-        elapsedTime = elapsed;
+        valueAnimator.cancel();
         isFinished = false;
     }
 
@@ -234,29 +238,35 @@ public class CountDownTimerView extends View{
 
     /**
      * stop the CountDownTimer and start success Animation.
+     * this will called {@link OnTimeFinish#onFinish()} method on
+     * its listeners which set By {@link #setOnEndAnimationFinish(OnTimeFinish)}.
      *
      * <p>this method will change finish mode to Success.</p>
      * @see #setFinishMode(FinishMode)
      */
     public void success(){
         finishMode = FinishMode.Success.mode;
-        if(valueAnimator != null)
-            pause();
-        mPaused = false;
         startEndAnimation();
     }
 
     /**
-     * stop the CountDownTimer and start failed Animation.
+     * @deprecated Use {@link #failure()}.
+     */
+    @Deprecated
+    public void failed(){
+        failure();
+    }
+
+    /**
+     * stop the CountDownTimer and start failure Animation.
+     * this will called {@link OnTimeFinish#onFinish()} method on
+     * its listeners which set By {@link #setOnEndAnimationFinish(OnTimeFinish)}.
      *
-     * <p>this method will change finish mode to Failed.</p>
+     * <p>this method will change finish mode to Failure.</p>
      * @see #setFinishMode(FinishMode)
      */
-    public void failed(){
-        finishMode = FinishMode.Failed.mode;
-        if(valueAnimator != null)
-            pause();
-        mPaused = false;
+    public void failure(){
+        finishMode = FinishMode.Failure.mode;
         startEndAnimation();
     }
 
@@ -267,6 +277,8 @@ public class CountDownTimerView extends View{
     }
 
     private void startEndAnimation() {
+        pause();
+        mPaused = false;
         animatorSet = new AnimatorSet();
         ObjectAnimator scaleX = ObjectAnimator.ofFloat(this, "scaleX", 0f);
         ObjectAnimator scaleY = ObjectAnimator.ofFloat(this, "scaleY", 0f);
@@ -280,14 +292,13 @@ public class CountDownTimerView extends View{
         scaleX2.addListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
-                stop();
                 drawFinish = true;
                 postInvalidate();
             }
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                if (onEndAnimationFinish != null)
+                if (!isFinished && onEndAnimationFinish != null)
                     onEndAnimationFinish.onFinish();
             }
 
@@ -366,7 +377,7 @@ public class CountDownTimerView extends View{
 
     /**
      * this will called after End Animation finished.
-     * (Default, Success, Failed).
+     * (Default, Success, Failure).
      */
     public void setOnEndAnimationFinish(OnTimeFinish onTimeFinish) {
         this.onEndAnimationFinish = onTimeFinish;
@@ -383,6 +394,7 @@ public class CountDownTimerView extends View{
 
     /**
      * The full time that you set by {@link #start(long)} method.
+     * Or default: 1000.
      *
      * @return FullTime in millisecond.
      */
@@ -470,9 +482,10 @@ public class CountDownTimerView extends View{
     }
 
     public enum FinishMode {
+        NoAnimation(-2),
+        Failure(-1),
         Default(0),
-        Success(1),
-        Failed(-1);
+        Success(1);
 
         int mode;
         FinishMode(int mode){

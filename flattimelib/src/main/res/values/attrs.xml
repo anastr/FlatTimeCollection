@@ -17,4 +17,8 @@
         <attr name="elapsedTimeColor" format="color" />
         <attr name="strokeWidth" format="float" />
     </declare-styleable>
+    <declare-styleable name="HourGlassView">
+        <attr name="hourGlassColor" format="color" />
+        <attr name="sandColor" format="color" />
+    </declare-styleable>
 </resources>
