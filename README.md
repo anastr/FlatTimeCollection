@@ -6,8 +6,8 @@ it is Not just a UI, But it contains a CountDownTimer with `pause()` and `resume
 
 Library Size ~ 10 Kb.
 
+<img src="/images/all.gif" width="40%" /><br/>
 <img src="/images/all.png" width="40%" /><br/>
-<img src="/images/HourGlassView.gif" width="5%" /><br/>
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FlatTimeCollection-green.svg?style=true)](https://android-arsenal.com/details/1/4104)<br/><br/>
 
 **note:** this Library doesn't use any drawable file (png, jpge ...), it just uses [Path](https://developer.android.com/reference/android/graphics/Path.html) class to draw canvas.
@@ -108,8 +108,8 @@ mCountDownTimer.resume();
 // Success
 mCountDownTimer.success();
 
-// Failed
-mCountDownTimer.failed();
+// Failure
+mCountDownTimer.failure();
 
 // on time finish
 mCountDownTimer.setOnTimeFinish(new OnTimeFinish() {
@@ -139,9 +139,44 @@ strokeWidth="10"
 ```
 
 ## HourGlassView
-Coming Soon .....
+it is special UI CountDownTimer with `flip()` method.
 
-<img src="/images/HourGlassView.gif" width="15%" />
+<img src="/images/HourGlassView.gif" width="20%" />
+
+add view to layout
+```xml
+<!-- do not change layout_height
+     it should always be "wrap_content" -->
+<com.github.anastr.flattimelib.HourGlassView
+        android:id="@+id/mHourGlass"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content" />
+
+```
+
+control in your code
+```java
+// to start CountDownTimer "time in millisecond"
+mHourGlass.start(11000);
+
+// to flip HourGlass.
+mHourGlass.flip();
+
+// on time finish
+mHourGlass.setOnTimeFinish(new OnTimeFinish() {
+            @Override
+            public void onFinish() {
+                Toast.makeText(getApplicationContext(), "finished", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+```
+
+### Attributes
+```xml
+hourGlassColor=""
+sandColor=""
+```
 
 
 # LICENSE
