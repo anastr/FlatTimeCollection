@@ -4,7 +4,7 @@ it is Not just a UI, But it contains a CountDownTimer with `pause()` and `resume
 
 `minSdkVersion=11`
 
-Library Size ~ 10 Kb.
+Library Size ~ 13 Kb.
 
 <img src="/images/all.gif" width="40%" /><br/>
 <img src="/images/all.png" width="40%" /><br/>
@@ -19,7 +19,7 @@ Library Size ~ 10 Kb.
 ```gradle
 
 dependencies {
-	    compile 'com.github.anastr:flattimelib:1.0.0'
+	    compile 'com.github.anastr:flattimelib:1.0.2'
 }
 
 ```
