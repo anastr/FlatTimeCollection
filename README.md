@@ -6,7 +6,6 @@ it is Not just a UI, But it contains a CountDownTimer with `pause()` and `resume
 
 Library Size ~ 13 Kb.
 
-<img src="/images/all.gif" width="40%" /><br/>
 <img src="/images/all.png" width="40%" /><br/>
 [![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-FlatTimeCollection-green.svg?style=true)](https://android-arsenal.com/details/1/4104)<br/><br/>
 
