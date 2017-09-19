@@ -3,12 +3,12 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "24.0.0"
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
 
     defaultConfig {
         minSdkVersion 11
-        targetSdkVersion 23
+        targetSdkVersion 26
         versionCode 1
         versionName "1.0"
     }
@@ -49,7 +49,7 @@ Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 group = 'com.github.anastr'
-version = '1.0.2'
+version = '1.0.3'
 
 bintray {
     user = properties.getProperty("bintray.user")
@@ -59,10 +59,10 @@ bintray {
         name = 'FlatTimeCollection' // the name of the package in BinTray
 
         version {
-            name = 'FlatTime_1.0.2' // the name of your library project
+            name = this.version // the name of your library project
             desc = 'Amazing Time UI'
             released  = new Date()
-            vcsTag = '1.0.2' // the version
+            vcsTag = this.version // the version
         }
 
         licenses = ['Apache-2.0']
