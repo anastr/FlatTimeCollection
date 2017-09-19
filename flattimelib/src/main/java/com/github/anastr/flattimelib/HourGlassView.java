@@ -22,7 +22,8 @@ public class HourGlassView extends View {
 
     private Paint hourGlassPaint, linePaint, sandPaint, sandLinePaint;
     private Path hourGlassPath;
-    private RectF rectTopSand, rectBottomSand;
+    private RectF rectTopSand = new RectF()
+            , rectBottomSand = new RectF();
     private float strokeWidth;
     private int hourGlassColor = Color.DKGRAY
             , sandColor = Color.parseColor("#967117");
