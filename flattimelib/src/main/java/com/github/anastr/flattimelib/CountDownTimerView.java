@@ -27,7 +27,7 @@ public class CountDownTimerView extends View{
             , remainingTimeColor = Color.parseColor("#5af960")
             , strokeColor = Color.parseColor("#302d2d")
             , elapsedTimeColor = Color.parseColor("#ff5c5c");
-    private float strokeWidth = 10f;
+    private float strokeWidth = dpTOpx(10f);
     private ValueAnimator valueAnimator;
     /** in MilliSecond */
     private long fullTime = 1000L;
@@ -75,7 +75,7 @@ public class CountDownTimerView extends View{
         remainingTimeColor = a.getColor(R.styleable.CountDownTimerView_remainingTimeColor, remainingTimeColor);
         strokeColor = a.getColor(R.styleable.CountDownTimerView_strokeColor, strokeColor);
         elapsedTimeColor = a.getColor(R.styleable.CountDownTimerView_elapsedTimeColor, elapsedTimeColor);
-        strokeWidth = a.getFloat(R.styleable.CountDownTimerView_strokeWidth, strokeWidth);
+        strokeWidth = a.getDimension(R.styleable.CountDownTimerView_strokeWidth, strokeWidth);
         a.recycle();
     }
 
@@ -94,6 +94,15 @@ public class CountDownTimerView extends View{
         // these two line just to make valueAnimator and animatorSet != null
         valueAnimator = ValueAnimator.ofFloat(0f, 1f);
         animatorSet = new AnimatorSet();
+    }
+
+    /**
+     * convert dp to <b>pixel</b>.
+     * @param dp to convert.
+     * @return Dimension in pixel.
+     */
+    public float dpTOpx(float dp) {
+        return dp * getContext().getResources().getDisplayMetrics().density;
     }
 
     @Override
