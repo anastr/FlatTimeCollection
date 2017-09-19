@@ -18,9 +18,19 @@ Library Size ~ 13 Kb.
 ```gradle
 
 dependencies {
-	    compile 'com.github.anastr:flattimelib:1.0.2'
+	    compile 'com.github.anastr:flattimelib:1.0.3'
 }
 
+```
+
+**for maven**
+```maven
+<dependency>
+  <groupId>com.github.anastr</groupId>
+  <artifactId>flattimelib</artifactId>
+  <version>1.0.3</version>
+  <type>pom</type>
+</dependency>
 ```
 
 ## FlatClockView
